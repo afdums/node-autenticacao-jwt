@@ -7,17 +7,16 @@ exports.login = async (req, res, next) => {
       var token = jwt.sign({ id }, process.env.SECRET, {
         expiresIn: 300 // expires in 5min
       });
-      res.status(200).send({ auth: true, token: token });
-      return;
+      return res.status(200).send({ auth: true, token: token });
     }
     
-    res.status(500).send('Login inválido!');
-    return;
+    return res.status(500).send('Login inválido!');
+
 };
 
 
 exports.logout = async(req, res) => {
 
-  res.status(200).send({ auth: false, token: null });
+  return res.status(200).send({ auth: false, token: null });
 
 };
