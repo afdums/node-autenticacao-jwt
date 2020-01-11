@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res, next) => {
+    console.log('dentro do login', req.body);
+
     if(req.body.user === 'anderson' && req.body.pwd === '123'){
       //auth ok
       const id = 1; //esse id viria do banco de dados
@@ -10,7 +12,7 @@ exports.login = async (req, res, next) => {
       return res.status(200).send({ auth: true, token: token });
     }
     
-    return res.status(500).send('Login inválido!');
+    return res.status(200).send('Login inválido!');
 
 };
 
